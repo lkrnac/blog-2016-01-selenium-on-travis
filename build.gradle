@@ -7,15 +7,12 @@ buildscript {
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-        classpath("io.spring.gradle:dependency-management-plugin:0.5.2.RELEASE")
 	}
 }
 
 apply plugin: 'java'
-apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
-apply plugin: 'io.spring.dependency-management'
 
 jar {
 	baseName = 'blog-2016-01-selenium-on-travis'
@@ -36,14 +33,6 @@ dependencies {
 	testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile("org.seleniumhq.selenium:selenium-firefox-driver:2.49.0")
     testCompile('org.seleniumhq.selenium:selenium-support:2.49.0')
-}
-
-
-eclipse {
-	classpath {
-		 containers.remove('org.eclipse.jdt.launching.JRE_CONTAINER')
-		 containers 'org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8'
-	}
 }
 
 task wrapper(type: Wrapper) {

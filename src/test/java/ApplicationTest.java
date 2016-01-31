@@ -28,31 +28,32 @@ public class ApplicationTest {
 
     @BeforeClass
     public static void setUp() throws IOException {
-        String travisCiFlag = System.getenv().get("TRAVIS");
-        FirefoxBinary firefoxBinary = "true".equals(travisCiFlag)
-                ? getFirefoxBinaryForTravisCi()
-                : new FirefoxBinary();
-
-        driver = new FirefoxDriver(firefoxBinary, new FirefoxProfile());
+//        String travisCiFlag = System.getenv().get("TRAVIS");
+//        FirefoxBinary firefoxBinary = "true".equals(travisCiFlag)
+//                ? getFirefoxBinaryForTravisCi()
+//                : new FirefoxBinary();
+//
+//        driver = new FirefoxDriver(firefoxBinary, new FirefoxProfile());
+        driver = new FirefoxDriver();
     }
 
-    private static FirefoxBinary getFirefoxBinaryForTravisCi() throws IOException {
-        String firefoxPath = getFirefoxPath();
-        Logger staticLog = LoggerFactory.getLogger(ApplicationTest.class);
-        staticLog.info("Firefox path: " + firefoxPath);
-
-        return new FirefoxBinary(new File(firefoxPath));
-    }
-
-    private static String getFirefoxPath() throws IOException {
-        ProcessBuilder pb = new ProcessBuilder("which", "firefox");
-        pb.redirectErrorStream(true);
-        Process process = pb.start();
-        try (InputStreamReader isr = new InputStreamReader(process.getInputStream(), "UTF-8");
-             BufferedReader br = new BufferedReader(isr)) {
-            return br.readLine();
-        }
-    }
+//    private static FirefoxBinary getFirefoxBinaryForTravisCi() throws IOException {
+//        String firefoxPath = getFirefoxPath();
+//        Logger staticLog = LoggerFactory.getLogger(ApplicationTest.class);
+//        staticLog.info("Firefox path: " + firefoxPath);
+//
+//        return new FirefoxBinary(new File(firefoxPath));
+//    }
+//
+//    private static String getFirefoxPath() throws IOException {
+//        ProcessBuilder pb = new ProcessBuilder("which", "firefox");
+//        pb.redirectErrorStream(true);
+//        Process process = pb.start();
+//        try (InputStreamReader isr = new InputStreamReader(process.getInputStream(), "UTF-8");
+//             BufferedReader br = new BufferedReader(isr)) {
+//            return br.readLine();
+//        }
+//    }
 
     @Test
     public void contextLoads() {

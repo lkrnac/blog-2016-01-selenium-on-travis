@@ -6,19 +6,22 @@ buildscript {
 		mavenCentral()
 	}
 	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") 
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("io.spring.gradle:dependency-management-plugin:0.5.2.RELEASE")
 	}
 }
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
-apply plugin: 'spring-boot' 
+apply plugin: 'spring-boot'
+apply plugin: 'io.spring.dependency-management'
 
 jar {
 	baseName = 'blog-2016-01-selenium-on-travis'
 	version = '0.0.1-SNAPSHOT'
 }
+
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
@@ -30,7 +33,9 @@ repositories {
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter')
 	compile('org.springframework.boot:spring-boot-starter-web')
-	testCompile('org.springframework.boot:spring-boot-starter-test') 
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile("org.seleniumhq.selenium:selenium-firefox-driver:2.49.0")
+    testCompile('org.seleniumhq.selenium:selenium-support:2.49.0')
 }
 
 

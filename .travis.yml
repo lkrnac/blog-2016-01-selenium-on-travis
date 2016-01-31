@@ -1,0 +1,24 @@
+language: java
+jdk:
+  - oraclejdk8
+
+addons:
+  firefox: "42.0"
+
+before_cache:
+  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+    - $HOME/.gradle/nodejs/
+    - node_modules
+
+install: echo "skip './gradlew assemble' step"
+
+before_script:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - sleep 3 # give xvfb some time to start
+
+script: ./gradlew build --continue

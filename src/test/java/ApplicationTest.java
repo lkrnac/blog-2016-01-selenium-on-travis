@@ -53,6 +53,7 @@ public class ApplicationTest {
             return br.readLine();
         }
     }
+
     @Test
     public void contextLoads() {
         driver.get("http://localhost:8080");

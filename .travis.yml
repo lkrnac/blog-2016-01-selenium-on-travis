@@ -14,11 +14,11 @@ cache:
     - $HOME/.gradle/nodejs/
     - node_modules
 
-#install: echo "skip './gradlew assemble' step"
+install: echo "skip './gradlew assemble' step"
 
 before_script:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
   - sleep 3 # give xvfb some time to start
 
-#script: ./gradlew build --continue
+script: ./gradlew build --continue
